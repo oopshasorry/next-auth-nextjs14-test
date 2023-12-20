@@ -8,6 +8,7 @@ import { getServerSession } from "next-auth";
 import { authOptions } from "../utils/auth";
 import { redirect } from "next/navigation";
 import SignInForm from "../components/SignInForm";
+import SigninWithAzureB2C from "../components/SignInWithAzureB2C";
 
 
 export default async function AuthRoute() {
@@ -27,6 +28,7 @@ export default async function AuthRoute() {
                     <div className="flex flex-col">
                         <SignInForm></SignInForm>
                         <SigninWithGithub></SigninWithGithub>
+                        <SigninWithAzureB2C></SigninWithAzureB2C>
                     </div>
                 </CardContent>
             </Card>

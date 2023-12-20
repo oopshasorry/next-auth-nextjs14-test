@@ -4,6 +4,7 @@ import EmailProvider from "next-auth/providers/email";
 
 import { TableStorageAdapter } from "@auth/azure-tables-adapter"
 import { AzureNamedKeyCredential, TableClient } from "@azure/data-tables"
+import AzureADB2C from "next-auth/providers/azure-ad-b2c";
 
 
 const credential = new AzureNamedKeyCredential(
@@ -34,6 +35,17 @@ export const authOptions ={
                 }
             },
             from: process.env.EMAIL_FROM
+        }),
+        AzureADB2C({
+            tenantId: process.env.AZURE_AD_B2C_TENANT_NAME,
+            clientId: process.env.AZURE_AD_B2C_CLIENT_ID as string,
+            clientSecret: process.env.AZURE_AD_B2C_CLIENT_SECRET as string,
+            primaryUserFlow: process.env.AZURE_AD_B2C_PRIMARY_USER_FLOW,
+            authorization: { params: { scope: "offline_access openid" } },
+            checks:["pkce"],
+            client: {
+                token_endpoint_auth_method: 'none'
+            },
         })
     ]
 } satisfies NextAuthOptions
