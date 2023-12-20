@@ -8,8 +8,8 @@ import AzureADB2C from "next-auth/providers/azure-ad-b2c";
 
 
 const credential = new AzureNamedKeyCredential(
-    process.env.AZURE_ACCOUNT as string,
-    process.env.AZURE_ACCESS_KEY as string
+    ""+ process.env.AZURE_ACCOUNT as string,
+    ""+ process.env.AZURE_ACCESS_KEY as string
 );
 const authClient = new TableClient(
     process.env.AZURE_TABLES_ENDPOINT as string,
