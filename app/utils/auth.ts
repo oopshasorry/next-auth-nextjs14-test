@@ -12,7 +12,7 @@ const credential = new AzureNamedKeyCredential(
     ""+ process.env.AZURE_ACCESS_KEY as string
 );
 const authClient = new TableClient(
-    process.env.AZURE_TABLES_ENDPOINT as string,
+    ""+process.env.AZURE_TABLES_ENDPOINT as string,
     "auth",
     credential
 );
