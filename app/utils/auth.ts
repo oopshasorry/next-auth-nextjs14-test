@@ -22,25 +22,25 @@ export const authOptions ={
     
     providers: [
         GitHubProvider({
-            clientId: process.env.GITHUB_ID as string,
-            clientSecret: process.env.GITHUB_SECRET_ID as string,
+            clientId: ""+process.env.GITHUB_ID as string,
+            clientSecret: ""+process.env.GITHUB_SECRET_ID as string,
         }),
         EmailProvider({
             server: {
-                host: process.env.EMAIL_SERVER_HOST,
-                port: process.env.EMAIL_SERVER_PORT,
+                host: ""+process.env.EMAIL_SERVER_HOST,
+                port: ""+process.env.EMAIL_SERVER_PORT,
                 auth: {
-                user: process.env.EMAIL_SERVER_USER,
-                pass: process.env.EMAIL_SERVER_PASSWORD
+                user: ""+process.env.EMAIL_SERVER_USER,
+                pass: ""+process.env.EMAIL_SERVER_PASSWORD
                 }
             },
             from: process.env.EMAIL_FROM
         }),
         AzureADB2C({
-            tenantId: process.env.AZURE_AD_B2C_TENANT_NAME,
-            clientId: process.env.AZURE_AD_B2C_CLIENT_ID as string,
-            clientSecret: process.env.AZURE_AD_B2C_CLIENT_SECRET as string,
-            primaryUserFlow: process.env.AZURE_AD_B2C_PRIMARY_USER_FLOW,
+            tenantId: ""+process.env.AZURE_AD_B2C_TENANT_NAME,
+            clientId: ""+process.env.AZURE_AD_B2C_CLIENT_ID as string,
+            clientSecret: ""+process.env.AZURE_AD_B2C_CLIENT_SECRET as string,
+            primaryUserFlow: ""+process.env.AZURE_AD_B2C_PRIMARY_USER_FLOW,
             authorization: { params: { scope: "offline_access openid" } },
             checks:["pkce"],
             client: {
