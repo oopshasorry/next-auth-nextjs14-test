@@ -7,10 +7,7 @@
         "apiRuntime": "node:18"
       },
 
-      "globalHeaders": {
-        "Access-Control-Allow-Origin": "zealous-smoke-00fdee710​.4​.azurestaticapps​.net",
-        "Access-Control-Allow-Methods": "POST, GET, OPTIONS",
-  
+      "globalHeaders": { 
         "content-security-policy": "frame-ancestors 'self';  upgrade-insecure-requests",
         "X-Frame-Options": "SAMEORIGIN",
         "X-Permitted-Cross-Domain-Policies": "none",
