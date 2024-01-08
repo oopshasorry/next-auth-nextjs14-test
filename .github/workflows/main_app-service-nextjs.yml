@@ -26,15 +26,16 @@ jobs:
           npm install
           npm run build --if-present
           npm run test --if-present
+          rm -rf ./.next/cache
 
-      - name: Zip all files for upload between jobs
-        run: zip next.zip ./* .next -qr
+      - name: Zip artifact for deployment
+        run: zip release.zip ./* .next -qr
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v3
         with:
           name: node-app
-          path: next.zip
+          path: release.zip
 
   deploy:
     runs-on: ubuntu-latest
@@ -49,9 +50,6 @@ jobs:
         with:
           name: node-app
 
-      - name: Unzip artifact for deployment
-        run: unzip next.zip
-
       - name: 'Deploy to Azure Web App'
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v2
@@ -59,6 +57,7 @@ jobs:
           app-name: 'app-service-nextjs'
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_F9A9E5D746CC43AEB045B4653F2AD2DB }}
-          package: next.zip
+          package: release.zip
+
       - name: Delete zip file
-        run: rm next.zip
+        run: rm release.zip
