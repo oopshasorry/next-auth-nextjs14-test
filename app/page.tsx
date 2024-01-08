@@ -11,7 +11,7 @@ export default async function Home() {
 
   return (
     <div className="p-10">
-      <h1>Hello from the index page, this is public route</h1>
+      <h1>Hello from the index page!!!</h1>
 
       {session ? (
         <div>
