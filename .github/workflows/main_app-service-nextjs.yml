@@ -60,5 +60,5 @@ jobs:
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_F9A9E5D746CC43AEB045B4653F2AD2DB }}
           package: next.zip
-      -name: Delete zip file
-      run: rm next.zip
+      - name: Delete zip file
+        run: rm next.zip
