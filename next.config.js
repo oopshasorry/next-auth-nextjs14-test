@@ -13,8 +13,6 @@ const cspHeader = `
     upgrade-insecure-requests;
 `;
 const nextConfig = {
-    
-    output: "standalone",
     async headers() {
         return [
             {
